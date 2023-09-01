@@ -1,2 +1,2 @@
-import {similarAdvert} from './data.js';
+import './card.js';
 

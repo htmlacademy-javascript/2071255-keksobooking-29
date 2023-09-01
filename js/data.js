@@ -59,7 +59,7 @@ const createAdvert = () => ({
 
 });
 //Генерация заданного количества объектов
-const similarAdvert = Array.from({length: 4}, createAdvert);
+const similarAdvert = () => Array.from({length: 4}, createAdvert);
 console.log(similarAdvert);
 
 export {similarAdvert};
