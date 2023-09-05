@@ -22,6 +22,44 @@ similarCards.forEach((card) => {
   cardElement.querySelector('.popup__text--price').firstChild.data = card.offer.price;
   cardElement.querySelector('.popup__type').textContent = offerType[card.offer.type];
   cardElement.querySelector('.popup__text--capacity').textContent = `${card.offer.rooms} комнаты для ${card.offer.guests} гостей`;
+
+  const featuresContainer = cardElement.querySelector('.popup__features');
+  if (card.offer.features.length) {
+    const featureNodes = featuresContainer.querySelectorAll('.popup__feature');
+
+    featureNodes.forEach((featureNode) => {
+      const isExistFeature = card.offer.features.some((feature) => featureNode.classList.contains(`popup__feature--${feature}`));
+      if (!isExistFeature) {
+        featureNode.remove();
+      }
+    });
+  } else {
+    featuresContainer.innerHTML = '';
+  }
+
+  cardElement.querySelector('.popup__description').textContent = card.offer.description;
+
+  const photoContainer = cardElement.querySelector('.popup__photos');
+  const newPhoto = photoContainer.querySelector('.popup__photo');
+  const photosFragment = document.createDocumentFragment();
+  photoContainer.innerHTML = '';
+  if (card.offer.photos.length) {
+    card.offer.photos.forEach((photo) => {
+      const newPhotoTemplate = newPhoto.cloneNode(true);
+      newPhotoTemplate.src = photo;
+      photosFragment.appendChild(newPhotoTemplate);
+    });
+    photoContainer.appendChild(photosFragment);
+  };
+
+  console.log(card.offer.photos);
+
+  card.offer.photos.forEach((element) => {
+    console.log(element);
+
+  });
   cardWindow.appendChild(cardElement);
 });
+ console.log(similarCards);
+
 

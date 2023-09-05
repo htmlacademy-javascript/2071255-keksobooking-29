@@ -31,7 +31,7 @@ function shuffle(startArray) {
   return array;
 };
 
-//Функция для генерации массива случайной длины и случайным содежимым
+//Функция для генерации массива случайной длины и случайным содержимым
 const getRandomArray = function(elements){
 
   let newArray = shuffle(elements);
@@ -42,7 +42,7 @@ const getRandomArray = function(elements){
   return newArray;
 };
 const getRandomArrayLength = function(elements){
-   let amount =  getRandomInteger(1, 15);
+   let amount =  getRandomInteger(1, 5);
    let newRandomArray = [];
    for (let i = 0; i < amount; i++) {
     newRandomArray.push(elements[getRandomInteger(0, elements.length - 1)]);
