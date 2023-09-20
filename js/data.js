@@ -1,7 +1,7 @@
 import {getRandomInteger, getRandomArrayElement, getRandomArray,
   getRandomArrayLength} from './util.js';
 
-  const TYPE_HOUSE=['palace','flat','house','bungalow','hotel'];
+  const TYPE_HOUSE=['bungalow', 'flat', 'hotel', 'house', 'palace',];
 
 const PHOTOS =['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
@@ -60,6 +60,6 @@ const createAdvert = () => ({
 });
 //Генерация заданного количества объектов
 const similarAdvert = () => Array.from({length: 2}, createAdvert);
-console.log(similarAdvert);
+
 
 export {similarAdvert};

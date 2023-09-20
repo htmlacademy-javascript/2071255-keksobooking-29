@@ -1,10 +1,10 @@
 import {similarAdvert} from './data.js';
 const offerType = {
-  flat : 'Квартира',
   bungalow: 'Бунгало',
+  flat : 'Квартира',
+  hotel: 'Отель',
   house: 'Дом',
   palace: 'Дворец',
-  hotel: 'Отель'
 };
 
 const cardWindow = document.querySelector('.map__canvas');
@@ -52,14 +52,14 @@ similarCards.forEach((card) => {
     photoContainer.appendChild(photosFragment);
   };
 
-  console.log(card.offer.photos);
 
   card.offer.photos.forEach((element) => {
-    console.log(element);
+
 
   });
   cardWindow.appendChild(cardElement);
 });
- console.log(similarCards);
+
+
 
 

@@ -23,7 +23,8 @@ const formPrice = formElement.querySelector('#price');
 const houseType = formElement.querySelector('#type');
 const formRoomNumber = formElement.querySelector('#room_number');
 const formRoomCapacity = formElement.querySelector('#capacity');
-
+const checkInTime = formElement.querySelector('#timein');
+const checkOutTime = formElement.querySelector('#timeout');
 
 /*Функция для деактивации формы */
 const disableForm = () => {
@@ -81,15 +82,26 @@ function validateMaxPriceMessage () {
   return `Максимальная цена ${MAX_PRICE}`;
 };
 //Минимальная цена от типа
+houseType.addEventListener("change", (evt) => {
+  console.log('this.option')
+  setCurrentType(evt.target.value);
+  validatePrice();
+
+});
+
 let currentRealtyType = DEFAULT_REALTY_TYPE;
 const validateMinPrice = (value) => rentMinPrice[currentRealtyType] <= value;
 const getMinPriceMessage = () => `Цена не может быть меньше ${rentMinPrice[currentRealtyType]}`;
+
+const setCurrentType = (type) => {
+  currentRealtyType = type;
+};
+const validatePrice = () => {
+  formPrice.placeholder = rentMinPrice[currentRealtyType];
+};
+
 pristine.addValidator(formPrice, validateMinPrice, getMinPriceMessage);
-
-
-pristine.addValidator(formPrice,
-  validateMaxPrice,
-  validateMaxPriceMessage
+pristine.addValidator(formPrice,validateMaxPrice,validateMaxPriceMessage
 );
 
 //Валидация по количеству комнат
@@ -104,6 +116,16 @@ ${formRoomCapacity.value === '1' ? 'гостя' : 'гостей'} невозмо
 
 pristine.addValidator(formRoomNumber, validateRoom, getCapacityErrorMessage);
 pristine.addValidator(formRoomCapacity, validateRoom, getCapacityErrorMessage);
+
+
+//Время заезда и выезда синхронизация
+checkInTime.addEventListener('change', (evt) => {
+  checkOutTime.value = evt.target.value;
+});
+checkOutTime.addEventListener('change', (evt) => {
+  checkInTime.value = evt.target.value;
+});
+
 
 formElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
